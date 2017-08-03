@@ -1,0 +1,19 @@
+# My docker-compose.yml file
+syncthing:
+  image: syncthing
+  container_name: syncthing
+  hostname: syncthing
+  ports:
+    - 8384:8384
+    - 21025:21025/udp
+    - 22000:22000
+  volumes:
+    # config files
+    - /opt/icom/syncthing/config:/var/syncthing/config
+    # directories to sync
+    - /opt/workspaces/workspace_ETL/aemet:/syncthing/aemet
+  command:
+    - '-home=/etc/syncthing'
+    - '-gui-address=0.0.0.0:8384'
+
+  
